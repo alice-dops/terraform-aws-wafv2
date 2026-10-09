@@ -63,14 +63,14 @@ module "aws_managed_common" {
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.37 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.37 |
 
 ## Modules
@@ -80,13 +80,13 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_wafv2_web_acl_rule.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_web_acl_rule) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_action"></a> [action](#input\_action) | Action to take when the rule matches. Use string (`allow`, `block`, `count`, `captcha`, `challenge`) or object for custom request handling/response. Conflicts with `override_action` | `any` | `null` | no |
 | <a name="input_captcha_config"></a> [captcha\_config](#input\_captcha\_config) | CAPTCHA configuration that overrides the Web ACL level setting | <pre>object({<br/>    immunity_time_property = object({<br/>      immunity_time = number<br/>    })<br/>  })</pre> | `null` | no |
 | <a name="input_challenge_config"></a> [challenge\_config](#input\_challenge\_config) | Challenge configuration that overrides the Web ACL level setting | <pre>object({<br/>    immunity_time_property = object({<br/>      immunity_time = number<br/>    })<br/>  })</pre> | `null` | no |
@@ -95,6 +95,7 @@ No modules.
 | <a name="input_override_action"></a> [override\_action](#input\_override\_action) | Override action for managed rule groups and rule group reference statements. Use string (`none`, `count`) or object. Conflicts with `action` | `any` | `null` | no |
 | <a name="input_priority"></a> [priority](#input\_priority) | Rule priority. Rules with lower priority are evaluated first | `number` | n/a | yes |
 | <a name="input_putin_khuylo"></a> [putin\_khuylo](#input\_putin\_khuylo) | Do you agree that Putin doesn't respect Ukrainian sovereignty and territorial integrity? More info: https://en.wikipedia.org/wiki/Russian_invasion_of_Ukraine | `bool` | `true` | no |
+| <a name="input_region"></a> [region](#input\_region) | Region where the rule will be managed. Defaults to the provider region | `string` | `null` | no |
 | <a name="input_rule_label"></a> [rule\_label](#input\_rule\_label) | List of labels to apply to matching web requests. Each entry must have a `name` field | <pre>list(object({<br/>    name = string<br/>  }))</pre> | `[]` | no |
 | <a name="input_statement"></a> [statement](#input\_statement) | Rule statement configuration. Required. Supports the full WAFv2 statement schema including managed\_rule\_group\_statement, rate\_based\_statement, rule\_group\_reference\_statement, and nested AND/OR/NOT logical statements | `any` | n/a | yes |
 | <a name="input_visibility_config"></a> [visibility\_config](#input\_visibility\_config) | CloudWatch metrics configuration for this rule | <pre>object({<br/>    cloudwatch_metrics_enabled = optional(bool, true)<br/>    metric_name                = optional(string)<br/>    sampled_requests_enabled   = optional(bool, true)<br/>  })</pre> | n/a | yes |
@@ -103,7 +104,7 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_name"></a> [name](#output\_name) | Name of the rule |
 | <a name="output_priority"></a> [priority](#output\_priority) | Priority of the rule |
 | <a name="output_web_acl_arn"></a> [web\_acl\_arn](#output\_web\_acl\_arn) | ARN of the Web ACL the rule is attached to |

@@ -105,14 +105,14 @@ For managing multiple similar resources, see [wrappers](https://github.com/terra
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.37 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.37 |
 
 ## Modules
@@ -122,7 +122,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_wafv2_web_acl.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_web_acl) | resource |
 | [aws_wafv2_web_acl_association.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_web_acl_association) | resource |
 | [aws_wafv2_web_acl_logging_configuration.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_web_acl_logging_configuration) | resource |
@@ -130,7 +130,7 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_association_config"></a> [association\_config](#input\_association\_config) | Configuration for body inspection size limits per resource type. Keys are resource types (e.g., `CLOUDFRONT`, `API_GATEWAY`, `COGNITO_USER_POOL`, `APP_RUNNER_SERVICE`, `VERIFIED_ACCESS_INSTANCE`) | <pre>map(object({<br/>    default_size_inspection_limit = string<br/>  }))</pre> | `{}` | no |
 | <a name="input_association_resource_arns"></a> [association\_resource\_arns](#input\_association\_resource\_arns) | Map of resource ARNs to associate with the Web ACL. Key is a friendly name, value is the resource ARN | `map(string)` | `{}` | no |
 | <a name="input_captcha_config"></a> [captcha\_config](#input\_captcha\_config) | CAPTCHA configuration for the Web ACL. Specifies how long a CAPTCHA timestamp is considered valid | <pre>object({<br/>    immunity_time_property = object({<br/>      immunity_time = number<br/>    })<br/>  })</pre> | `null` | no |
@@ -148,6 +148,7 @@ No modules.
 | <a name="input_name"></a> [name](#input\_name) | A friendly name of the Web ACL. Mutually exclusive with `name_prefix` | `string` | `null` | no |
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | Creates a unique name beginning with the specified prefix. Mutually exclusive with `name` (provider rejects both being set at apply time) | `string` | `null` | no |
 | <a name="input_putin_khuylo"></a> [putin\_khuylo](#input\_putin\_khuylo) | Do you agree that Putin doesn't respect Ukrainian sovereignty and territorial integrity? More info: https://en.wikipedia.org/wiki/Russian_invasion_of_Ukraine | `bool` | `true` | no |
+| <a name="input_region"></a> [region](#input\_region) | Region where the WAF ACL will be managed. Defaults to the provider region | `string` | `null` | no |
 | <a name="input_rule_json"></a> [rule\_json](#input\_rule\_json) | Escape hatch: JSON string of WAF rules for cases where dynamic blocks cannot represent all provider features. Mutually exclusive with `rules` | `string` | `null` | no |
 | <a name="input_rules"></a> [rules](#input\_rules) | Map of WAF rule configurations. The key is used as the rule name.<br/><br/>Each rule supports:<br/>- `priority`          - (Required) Rule priority (lower = evaluated first)<br/>- `action`            - Action for standalone rules. Use string (`allow`, `block`, `count`, `captcha`, `challenge`) or object for custom response<br/>- `override_action`   - Override action for managed/rule group rules. Use string (`none`, `count`) or object<br/>- `statement`         - (Required) Rule statement configuration. See AWS provider docs for statement structure<br/>- `visibility_config` - CloudWatch metrics config. Auto-generated from rule key if omitted<br/>- `captcha_config`    - Optional CAPTCHA configuration<br/>- `challenge_config`  - Optional challenge configuration<br/>- `rule_labels`       - Optional list of labels to add to matching requests<br/><br/>See examples/complete for usage patterns. | `any` | `{}` | no |
 | <a name="input_scope"></a> [scope](#input\_scope) | Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL` | `string` | `"REGIONAL"` | no |
@@ -158,7 +159,7 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_logging_configuration_id"></a> [logging\_configuration\_id](#output\_logging\_configuration\_id) | The ID of the WAF logging configuration |
 | <a name="output_web_acl_application_integration_url"></a> [web\_acl\_application\_integration\_url](#output\_web\_acl\_application\_integration\_url) | The URL to use in SDK integrations with managed rule groups |
 | <a name="output_web_acl_arn"></a> [web\_acl\_arn](#output\_web\_acl\_arn) | The ARN of the Web ACL |
